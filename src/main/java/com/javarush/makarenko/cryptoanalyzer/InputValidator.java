@@ -126,8 +126,7 @@ public class InputValidator {
 
         if (filePath.equals(inputPath)) {
             return (checkIsExist(path) && checkIsRegularFile(path) && checkIsTxtExtension(path) && checkIsReadable(path) && checkIsFileNotEmpty(path));
-        }
-        else {
+        } else {
             return (checkIsExist(path) && checkIsRegularFile(path) && checkIsTxtExtension(path) && checkIsWritable(path));
         }
     }
@@ -157,8 +156,7 @@ public class InputValidator {
         String fileName = path.getFileName().toString();
         if (fileName.toLowerCase().endsWith(".txt")) {
             return true;
-        }
-        else {
+        } else {
             this.checkPassedInfo += ((path.toString().equals(inputPath)) ? "Ошибка с input-файлом.\n" : "Ошибка с output-файлом.\n") + "Выбранный файл не имеет расширение .txt." + ERROR_MESSAGE_SEPARATOR;
             return false;
         }
@@ -173,8 +171,7 @@ public class InputValidator {
                 this.checkPassedInfo += "Ошибка с input-файлом.\nИсходный файл не доступен для чтения." + ERROR_MESSAGE_SEPARATOR;
                 return false;
             }
-        }
-        else {
+        } else {
             return true;                            // если path = outputPath, то проверка файла на чтение пропускается
         }
     }
@@ -188,8 +185,7 @@ public class InputValidator {
                 this.checkPassedInfo += "Ошибка с output-файлом.\nФайл для записи результатов не доступен для записи." + ERROR_MESSAGE_SEPARATOR;
                 return false;
             }
-        }
-        else {
+        } else {
             return true;                            // если path = inputPath, то проверка файла на запись пропускается
         }
     }

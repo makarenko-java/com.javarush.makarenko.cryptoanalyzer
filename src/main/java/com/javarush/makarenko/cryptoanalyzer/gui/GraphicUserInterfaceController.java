@@ -43,6 +43,11 @@ public class GraphicUserInterfaceController {
     private TextField textFieldInputPath;
     @FXML
     private TextField textFieldOutputPath;
+    @FXML
+    private Button buttonPreviousShift;
+    @FXML
+    private Button buttonNextShift;
+
 
     @FXML
     private void initialize() {
@@ -106,6 +111,8 @@ public class GraphicUserInterfaceController {
 
         labelShiftFound.setVisible(false);
         textFieldShiftFound.setVisible(false);
+        buttonPreviousShift.setVisible(false);
+        buttonNextShift.setVisible(false);
 
         rootPane.setDisable(true);  // блокирование элементов интерфейса
 
@@ -129,8 +136,7 @@ public class GraphicUserInterfaceController {
                 if (radioButtonInputFile.isSelected()) {
                     text = FileHandler.readFile(textFieldInputPath.getText());
                     textAreaDecrypted.setText(text);
-                }
-                else {
+                } else {
                     text = textAreaDecrypted.getText();
                 }
                 CipherLogic cipherLogic = new CipherLogic(text, Integer.parseInt(textFieldShift.getText()));
@@ -139,8 +145,7 @@ public class GraphicUserInterfaceController {
                     FileHandler.writeFile(textFieldOutputPath.getText(), result);
                 }
                 textAreaEncrypted.setText(result);
-            }
-            else {
+            } else {
                 this.showMessage("Внимание!", inputValidator.checkPassedInfo, Alert.AlertType.ERROR);
             }
         } catch (Exception e) {
@@ -156,6 +161,8 @@ public class GraphicUserInterfaceController {
 
         labelShiftFound.setVisible(false);
         textFieldShiftFound.setVisible(false);
+        buttonPreviousShift.setVisible(false);
+        buttonNextShift.setVisible(false);
 
         rootPane.setDisable(true);  // блокирование элементов интерфейса
 
@@ -179,8 +186,7 @@ public class GraphicUserInterfaceController {
                 if (radioButtonInputFile.isSelected()) {
                     text = FileHandler.readFile(textFieldInputPath.getText());
                     textAreaEncrypted.setText(text);
-                }
-                else {
+                } else {
                     text = textAreaEncrypted.getText();
                 }
                 CipherLogic cipherLogic = new CipherLogic(text, Integer.parseInt(textFieldShift.getText()));
@@ -189,8 +195,7 @@ public class GraphicUserInterfaceController {
                     FileHandler.writeFile(textFieldOutputPath.getText(), result);
                 }
                 textAreaDecrypted.setText(result);
-            }
-            else {
+            } else {
                 this.showMessage("Внимание!", inputValidator.checkPassedInfo, Alert.AlertType.ERROR);
             }
         } catch (Exception e) {
@@ -225,9 +230,8 @@ public class GraphicUserInterfaceController {
 
                 if (radioButtonInputFile.isSelected()) {
                     text = FileHandler.readFile(textFieldInputPath.getText());
-                    textAreaDecrypted.setText(text);
-                }
-                else {
+                    textAreaEncrypted.setText(text);
+                } else {
                     text = textAreaEncrypted.getText();
                 }
                 CipherLogic cipherLogic = new CipherLogic(text, bruteForceTextResult);
@@ -236,11 +240,12 @@ public class GraphicUserInterfaceController {
                     FileHandler.writeFile(textFieldOutputPath.getText(), bruteForceTextResult[scoreMaxIndex]);
                 }
                 textAreaDecrypted.setText(bruteForceTextResult[scoreMaxIndex]);
-                textFieldShiftFound.setText(String.valueOf(scoreMaxIndex+1));
+                textFieldShiftFound.setText(String.valueOf(scoreMaxIndex + 1));
                 labelShiftFound.setVisible(true);
                 textFieldShiftFound.setVisible(true);
-            }
-            else {
+                buttonPreviousShift.setVisible(true);
+                buttonNextShift.setVisible(true);
+            } else {
                 this.showMessage("Внимание!", inputValidator.checkPassedInfo, Alert.AlertType.ERROR);
             }
         } catch (Exception e) {
@@ -249,11 +254,27 @@ public class GraphicUserInterfaceController {
         rootPane.setDisable(false);  // разблокирование элементов интерфейса
     }
 
+    @FXML
+    private void buttonPreviousShift() {
+        int index = Integer.parseInt(textFieldShiftFound.getText()) - 1;
+        index = (CipherLogic.shiftRange + index - 1) % CipherLogic.shiftRange;
+        textAreaDecrypted.setText(bruteForceTextResult[index]);
+        textFieldShiftFound.setText(String.valueOf(index + 1));
+    }
+
+    @FXML
+    private void buttonNextShift() {
+        int index = Integer.parseInt(textFieldShiftFound.getText()) - 1;
+        index = (CipherLogic.shiftRange + index + 1) % CipherLogic.shiftRange;
+        textAreaDecrypted.setText(bruteForceTextResult[index]);
+        textFieldShiftFound.setText(String.valueOf(index + 1));
+    }
+
     private void showMessage(String title, String text, Alert.AlertType alertType) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
         alert.setContentText(text);
-        alert.getDialogPane().setPrefSize(472,472);
+        alert.getDialogPane().setPrefSize(472, 472);
         alert.showAndWait();
     }
 }

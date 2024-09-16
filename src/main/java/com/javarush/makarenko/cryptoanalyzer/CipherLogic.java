@@ -1,5 +1,6 @@
 package com.javarush.makarenko.cryptoanalyzer;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
@@ -7,9 +8,7 @@ import java.util.Set;
 
 public class CipherLogic {
 
-    private static final char[] ALPHABET = {'а', 'б', 'в', 'г', 'д', 'е', 'ж', 'з',
-            'и','к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ',
-            'ъ', 'ы', 'ь', 'э', 'я', '.', ',', '«', '»', '"', '\'', ':', '!', '?', ' '};
+    private static final char[] ALPHABET = {'а', 'б', 'в', 'г', 'д', 'е', 'ж', 'з', 'и', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'я', '.', ',', '«', '»', '"', '\'', ':', '!', '?', ' '};
     public static final int shiftRange = ALPHABET.length - 1;
 
     private static final HashMap<Character, Integer> alphabetKeyCharValueInt = new HashMap<>();
@@ -25,8 +24,7 @@ public class CipherLogic {
             alphabetKeyIntValueChar.put(i, character);
             if (Character.isLetter(character)) {
                 alphabetKeyIntValueChar.put(i + ALPHABET.length, Character.toUpperCase(character));
-            }
-            else {
+            } else {
                 alphabetPunctuation.add(character);
             }
         }
@@ -47,7 +45,6 @@ public class CipherLogic {
     }
 
 
-
     private String inputText;
     private int shift;
     private String[] bruteForceTextResult;
@@ -61,8 +58,6 @@ public class CipherLogic {
         this.inputText = inputText;
         this.bruteForceTextResult = bruteForceTextResult;
     }
-
-
 
 
     public String encrypt() {
@@ -89,9 +84,6 @@ public class CipherLogic {
     }
 
 
-
-
-
     public String decrypt() {
         int indexShifted;
         int index;
@@ -114,9 +106,6 @@ public class CipherLogic {
         }
         return outputText.toString();
     }
-
-
-
 
 
     public int bruteForce() {
@@ -176,7 +165,7 @@ public class CipherLogic {
                 }
                 // проходимся по тексту и проверяем пробел после !?., и если нет делаем --
                 if (character == '!' || character == '?' || character == '.' || character == ',' || character == ':' || character == ';') {
-                    if (!(outputTextArray[i].charAt(j+1) == ' ')) {
+                    if (!(outputTextArray[i].charAt(j + 1) == ' ')) {
                         score[i]--;
                     }
                 }
@@ -196,54 +185,4 @@ public class CipherLogic {
 
         return scoreMaxIndex;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-    //char[] analysisChar = new char[] {'о','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''};
-    //double[] analysisFreqency = new double[] {10.97,8.45,8.01,7.35,6.7,6.26,5.47,};
-//    о	1	10,97%
-//    е	2	8,45%
-//    а	3	8,01%
-//    и	4	7,35%
-//    н	5	6,70%
-//    т	6	6,26%
-//    с	7	5,47%
-//    р	8	4,73%
-//    в	9	4,54%
-//    л	10	4,40%
-//    к	11	3,49%
-//    м	12	3,21%
-//    д	13	2,98%
-//    п	14	2,81%
-//    у	15	2,62%
-//    я	16	2,01%
-//    ы	17	1,90%
-//    ь	18	1,74%
-//    г	19	1,70%
-//    з	20	1,65%
-//    б	21	1,59%
-//    ч	22	1,44%
-//    й	23	1,21%
-//    х	24	0,97%
-//    ж	25	0,94%
-//    ш	26	0,73%
-//    ю	27	0,64%
-//    ц	28	0,48%
-//    щ	29	0,36%
-//    э	30	0,32%
-//    ф	31	0,26%
-//    ъ	32	0,04%
-//    ё	33	 0,04%
-
-
-
 }

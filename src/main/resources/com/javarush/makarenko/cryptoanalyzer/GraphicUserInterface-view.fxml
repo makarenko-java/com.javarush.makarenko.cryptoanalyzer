@@ -15,9 +15,9 @@
       <TextArea fx:id="textAreaDecrypted" layoutX="8.0" layoutY="32.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="240.0" prefWidth="388.0" />
       <TextArea fx:id="textAreaEncrypted" layoutX="404.0" layoutY="32.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="240.0" prefWidth="388.0" />
       <Label alignment="CENTER" layoutX="8.0" layoutY="280.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="190.0" text="Ключ шифрования" />
-      <Label fx:id="labelShiftFound" alignment="CENTER" layoutX="404.0" layoutY="280.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="190.0" text="Найденный ключ шифрования" visible="false" />
-      <TextField fx:id="textFieldShift" layoutX="206.0" layoutY="280.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="190.0" />
-      <TextField fx:id="textFieldShiftFound" editable="false" layoutX="602.0" layoutY="280.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="190.0" visible="false" />
+      <Label fx:id="labelShiftFound" alignment="CENTER" layoutX="404.0" layoutY="280.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="91.0" text="Ключ" visible="false" />
+      <TextField fx:id="textFieldShift" alignment="CENTER" layoutX="206.0" layoutY="280.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="190.0" />
+      <TextField fx:id="textFieldShiftFound" alignment="CENTER" editable="false" layoutX="503.0" layoutY="280.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="91.0" visible="false" />
       <Label alignment="CENTER" layoutX="8.0" layoutY="312.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="190.0" text="Исходные данные" />
       <RadioButton layoutX="206.0" layoutY="312.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="190.0" selected="true" text="Чтение из окна">
          <toggleGroup>
@@ -39,5 +39,7 @@
       <Button layoutX="8.0" layoutY="424.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#buttonEncryptClick" prefHeight="40.0" prefWidth="388.0" text="Encrypt" />
       <Button layoutX="404.0" layoutY="424.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#buttonDecryptClick" prefHeight="40.0" prefWidth="190.0" text="Decrypt" />
       <Button layoutX="602.0" layoutY="424.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#buttonBruteForceClick" prefHeight="40.0" prefWidth="190.0" text="Brute Force" />
+      <Button fx:id="buttonPreviousShift" layoutX="602.0" layoutY="280.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#buttonPreviousShift" prefHeight="24.0" prefWidth="91.0" text="&lt;" visible="false" />
+      <Button fx:id="buttonNextShift" layoutX="701.0" layoutY="280.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#buttonNextShift" prefHeight="24.0" prefWidth="91.0" text="&gt;" visible="false" />
    </children>
 </AnchorPane>
